@@ -52,4 +52,14 @@ public class ReservaFixa : MonoBehaviour, IReservaDeObjetos
     {
         return this.reserva.Count > 0;
     }
+
+    private void OnValidate()
+    {
+        var reservavel = this.prefab.GetComponent<IReservavel>();
+        if (reservavel == null)
+        {
+            this.prefab = null;
+            throw new System.Exception("Atributo [prefab] requer um objeto que contenha a implementação da interface [IReservavel]");
+        }
+    }
 }

@@ -17,7 +17,7 @@ public class ReservaExtensivel : MonoBehaviour, IReservaDeObjetos
 
     private void CriarNovoObjeto()
     {
-        var objeto = GameObject.Instantiate(this.prefab, this.transform);
+        var objeto = Instantiate(this.prefab, this.transform);
         var objetoReservavel = objeto.GetComponent<IReservavel>();
         objetoReservavel.SetReserva(this);
         this.DevolverObjeto(objeto);
@@ -46,5 +46,15 @@ public class ReservaExtensivel : MonoBehaviour, IReservaDeObjetos
     public bool TemObjeto()
     {
         return true;
+    }
+
+    private void OnValidate()
+    {
+        var reservavel = this.prefab.GetComponent<IReservavel>();
+        if (reservavel == null)
+        {
+            this.prefab = null;
+            throw new System.Exception("Atributo [prefab] requer um objeto que contenha a implementação da interface [IReservavel]");
+        }
     }
 }

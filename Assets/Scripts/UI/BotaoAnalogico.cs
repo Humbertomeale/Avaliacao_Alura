@@ -36,7 +36,7 @@ public class BotaoAnalogico : MonoBehaviour, IDragHandler, IPointerUpHandler, IP
 
     private float TamanhoDaImagem()
     {
-        return this.imagemFundo.rect.width / 2;
+        return this.imagemFundo.rect.width / 3;
     }
 
     private void PosicionarJoystick(Vector2 posicaoMouse)

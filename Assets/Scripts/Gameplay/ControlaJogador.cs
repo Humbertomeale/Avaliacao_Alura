@@ -2,18 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
 {
+    //Variáveis//
 
+    //Privadas//
     private Vector3 direcao;
-    public LayerMask MascaraChao;
-    public GameObject TextoGameOver;
-    public ControlaInterface scriptControlaInterface;
-    public AudioClip SomDeDano;
+    [SerializeField]
+    private ControlaInterface scriptControlaInterface;
     private MovimentoJogador meuMovimentoJogador;
     private AnimacaoPersonagem animacaoJogador;
+    //---------//
+    //Públicas//
+    public AudioClip SomDeDano;
     public Status statusJogador;
+    //-------//
+    //Eventos Unity//
+    [SerializeField]
+    private UnityEvent aoMorrer;
+    //--------//
+    //Métodos//
 
     private void Start()
     {
@@ -22,7 +32,6 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
         statusJogador = GetComponent<Status>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -32,7 +41,6 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     void FixedUpdate()
     {
         meuMovimentoJogador.Movimentar(statusJogador.Velocidade);
-
         meuMovimentoJogador.RotacaoJogador();
     }
 
@@ -49,7 +57,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
 
     public void Morrer ()
     {
-        scriptControlaInterface.GameOver();
+        aoMorrer.Invoke();
     }
 
     public void CurarVida (int quantidadeDeCura)
