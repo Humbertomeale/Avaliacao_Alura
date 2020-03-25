@@ -4,25 +4,46 @@ using UnityEngine;
 
 public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 {
+    //Variáveis//
 
+    //Privadas//
     private GameObject Jogador;
+    [SerializeField]
+    private float campoDeVisão = 15f;
+    [SerializeField]
+    private float alcanceDoAtaque = 2.5f;
+    [SerializeField]
+    private float raioDeposicaoAleatoria = 10;
+    [SerializeField]
+    private int danoMin = 20;
+    [SerializeField]
+    private int danoMax = 30;
+    private float ajusteProximidadeDestino = 0.05f;
+    [SerializeField]
+    private RangeInt tempoAleatório;
+    private ControlaInterface scriptControlaInterface;
     private MovimentoPersonagem movimentaInimigo;
     private AnimacaoPersonagem animacaoInimigo;
     private Status statusInimigo;
-    public AudioClip SomDeMorte;
+    [SerializeField]
+    private AudioClip SomDeMorte;
     private Vector3 posicaoAleatoria;
     private Vector3 direcao;
     private float contadorVagar;
+    private IReservaDeObjetos reserva;
     private float tempoEntrePosicoesAleatorias = 4;
     private float porcentagemGerarKitMedico = 0.1f;
-    public GameObject KitMedicoPrefab;
-    private ControlaInterface scriptControlaInterface;
+    [SerializeField]
+    private GameObject KitMedicoPrefab;
+    //---------//
+
+    //Públicas//
     [HideInInspector]
     public GeradorZumbis meuGerador;
     public GameObject ParticulaSangueZumbi;
+    //------//
 
-    private IReservaDeObjetos reserva;
-  
+    //Métodos//
 
     public void SetReserva(IReservaDeObjetos reserva)
     {
@@ -36,7 +57,6 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 
     void Start () {
         Jogador = GameObject.FindWithTag("Jogador");
-        
         AleatorizarZumbi();
         statusInimigo = GetComponent<Status>();
         scriptControlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
@@ -49,11 +69,11 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         movimentaInimigo.Rotacionar(direcao);
         animacaoInimigo.Movimentar(direcao.magnitude);
 
-        if(distancia > 15)
+        if(distancia > campoDeVisão)
         {
             Vagar ();
         }
-        else if (distancia > 2.5)
+        else if (distancia > alcanceDoAtaque)
         {
             direcao = Jogador.transform.position - transform.position;
             movimentaInimigo.SetDirecao(direcao);
@@ -78,7 +98,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
             contadorVagar += tempoEntrePosicoesAleatorias + Random.Range(-1f, 1f);
         }
 
-        bool ficouPertoOSuficiente = Vector3.Distance(transform.position, posicaoAleatoria) <= 0.05;
+        bool ficouPertoOSuficiente = Vector3.Distance(transform.position, posicaoAleatoria) <= ajusteProximidadeDestino;
         if (ficouPertoOSuficiente == false)
         {
             direcao = posicaoAleatoria - transform.position;
@@ -89,7 +109,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 
     Vector3 AleatorizarPosicao ()
     {
-        Vector3 posicao = Random.insideUnitSphere * 10;
+        Vector3 posicao = Random.insideUnitSphere * raioDeposicaoAleatoria;
         posicao += transform.position;
         posicao.y = transform.position.y;
 
@@ -98,7 +118,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 
     void AtacaJogador ()
     {
-        int dano = Random.Range(20, 30);
+        int dano = Random.Range(danoMin, danoMax);
         Jogador.GetComponent<ControlaJogador>().TomarDano(dano);
     }
 
