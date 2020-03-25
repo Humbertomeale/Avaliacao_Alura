@@ -10,8 +10,6 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
 
     //Privadas//
     private Vector3 direcao;
-    [SerializeField]
-    private ControlaInterface scriptControlaInterface;
     private MovimentoJogador meuMovimentoJogador;
     private AnimacaoPersonagem animacaoJogador;
     //---------//
@@ -22,7 +20,10 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     //Eventos Unity//
     [SerializeField]
     private UnityEvent aoMorrer;
+    [SerializeField]
+    private UnityEvent atualizandoBarraDeVida;
     //--------//
+
     //Métodos//
 
     private void Start()
@@ -47,7 +48,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     public void TomarDano (int dano)
     {
         statusJogador.Vida -= dano;
-        scriptControlaInterface.AtualizarSliderVidaJogador();
+        atualizandoBarraDeVida.Invoke();
         ControlaAudio.instancia.PlayOneShot(SomDeDano);
         if(statusJogador.Vida <= 0)
         {
@@ -67,6 +68,6 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
         {
             statusJogador.Vida = statusJogador.VidaInicial;
         }
-        scriptControlaInterface.AtualizarSliderVidaJogador();
+        atualizandoBarraDeVida.Invoke();
     }
 }

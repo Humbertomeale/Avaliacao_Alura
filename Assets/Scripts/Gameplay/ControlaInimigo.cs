@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 {
 
-    public GameObject Jogador;
+    private GameObject Jogador;
     private MovimentoPersonagem movimentaInimigo;
     private AnimacaoPersonagem animacaoInimigo;
     private Status statusInimigo;
