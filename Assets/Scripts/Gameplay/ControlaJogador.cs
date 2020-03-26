@@ -36,6 +36,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
 
     private void Start()
     {
+        if (aoSofrerDano == null) aoSofrerDano = new ObterInteiro();//verificação nula
         meuMovimentoJogador = GetComponent<MovimentoJogador>();
         animacaoJogador = GetComponent<AnimacaoPersonagem>();
         statusJogador = GetComponent<Status>();

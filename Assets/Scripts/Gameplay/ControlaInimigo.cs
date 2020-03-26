@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 {
@@ -30,19 +31,24 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     private float contadorVagar;
     private IReservaDeObjetos reserva;
     private float tempoEntrePosicoesAleatorias = 4;
+    [SerializeField]
     private float porcentagemGerarKitMedico = 0.1f;
     [SerializeField]
     private GameObject KitMedicoPrefab;
-    //---------//
-    //Unity Events//
     [SerializeField]
-    private ObterInteiro aoSofrerDano;
-    //-----------//
+    private GameObject ParticulaSangueZumbi;
+    //---------//
     //Públicas//
     [HideInInspector]
     public GeradorZumbis meuGerador;
-    public GameObject ParticulaSangueZumbi;
-    //------//   
+    //------// 
+    //Unity Events//
+    [SerializeField]
+    private ObterInteiro aoSofrerDano;
+    [SerializeField]
+    private UnityEvent aoMorrer;
+    //-----------//
+     
    
     private void Awake()
     {
@@ -51,12 +57,15 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     }
 
     void Start () {
+        if (aoSofrerDano == null) aoSofrerDano = new ObterInteiro();//verificação nula
         Jogador = GameObject.FindWithTag("Jogador");
         AleatorizarZumbi();
         statusInimigo = GetComponent<Status>();
-        scriptControlaInterface = GameObject.FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
+        scriptControlaInterface = FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
     }
+    //--------//
 
+    //Updates e movimentação//
     void FixedUpdate()
     {
         float distancia = Vector3.Distance(transform.position, Jogador.transform.position);
@@ -84,11 +93,6 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         }
     }
 
-    public void SetReserva(IReservaDeObjetos reserva)
-    {
-        this.reserva = reserva;
-    }
-
     void Vagar ()
     {
         contadorVagar -= Time.deltaTime;
@@ -106,13 +110,14 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
             movimentaInimigo.Movimentar( statusInimigo.VelocidadeDeMovimento());
         }           
     }
+    //--------//
 
+    //Metodos públicos e calculos de parâmetros//
     Vector3 AleatorizarPosicao ()
     {
         Vector3 posicao = Random.insideUnitSphere * raioDeposicaoAleatoria;
         posicao += transform.position;
         posicao.y = transform.position.y;
-
         return posicao;
     }
 
@@ -130,8 +135,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 
     public void TomarDano(int dano)
     {
-        aoSofrerDano.Invoke(dano);
-       // statusInimigo.Vida() -= dano;
+        aoSofrerDano.Invoke(dano);       
         if(statusInimigo.VidaAtual() <= 0)
         {
             Morrer();
@@ -146,26 +150,31 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     public void Morrer()
     {
         Invoke("VoltarParaReserva", 2);
-        animacaoInimigo.Morrer();
-        movimentaInimigo.Morrer();
+        aoMorrer.Invoke();
         this.enabled = false;
         ControlaAudio.instancia.PlayOneShot(SomDeMorte);
-        VerificarGeracaoKitMedico(porcentagemGerarKitMedico);
         scriptControlaInterface.AtualizarQuantidadeDeZumbisMortos();
         
+    }
+
+    public void VerificarGeracaoKitMedico()
+    {
+        if (Random.value <= this.porcentagemGerarKitMedico)
+        {
+            Instantiate(KitMedicoPrefab, transform.position, Quaternion.identity);
+        }
+    }
+    //----------//
+
+    //Metodos de Reservas//
+    public void SetReserva(IReservaDeObjetos reserva)
+    {
+        this.reserva = reserva;
     }
 
     private void VoltarParaReserva()
     {       
         this.reserva.DevolverObjeto(this.gameObject);
-    }
-
-    private void VerificarGeracaoKitMedico(float porcentagemGeracao)
-    {
-        if (Random.value <= porcentagemGeracao)
-        {
-            Instantiate(KitMedicoPrefab, transform.position, Quaternion.identity);
-        }
     }
 
     public void AoEntrarNaReserva()
