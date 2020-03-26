@@ -9,8 +9,19 @@ public class Status : MonoBehaviour
     public int Vida;
     public float Velocidade = 5;
 
-    void Awake ()
+    private void Awake ()
     {
         Vida = VidaInicial;
+    }
+
+    public void calculandoDano(int dn)
+    {
+        Vida -= dn;
+        Debug.Log(dn);
+    }
+
+    public int VidaAtual()
+    {
+        return this.Vida;
     }
 }

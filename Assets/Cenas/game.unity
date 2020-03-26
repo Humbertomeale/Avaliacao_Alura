@@ -11904,6 +11904,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
         type: 3}
+      propertyPath: aoSofrerDano.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
       propertyPath: TextoGameOver
       value: 
       objectReference: {fileID: 0}
@@ -11976,6 +11981,41 @@ PrefabInstance:
         type: 3}
       propertyPath: atualizandoBarraDeVida.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: aoSofrerDano.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: aoSofrerDano.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: aoSofrerDano.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665214593}
+    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: aoSofrerDano.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: calculandoDano
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: aoSofrerDano.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: aoSofrerDano.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: aoSofrerDano.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
         type: 3}

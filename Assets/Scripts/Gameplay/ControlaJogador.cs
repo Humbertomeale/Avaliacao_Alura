@@ -22,6 +22,8 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     private UnityEvent aoMorrer;
     [SerializeField]
     private UnityEvent atualizandoBarraDeVida;
+    [SerializeField]
+    private ObterInteiro aoSofrerDano;
     //--------//
 
     //Métodos//
@@ -47,7 +49,8 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
 
     public void TomarDano (int dano)
     {
-        statusJogador.Vida -= dano;
+        aoSofrerDano.Invoke(dano);
+        //statusJogador.Vida -= dano;
         atualizandoBarraDeVida.Invoke();
         ControlaAudio.instancia.PlayOneShot(SomDeDano);
         if(statusJogador.Vida <= 0)
@@ -70,4 +73,9 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
         }
         atualizandoBarraDeVida.Invoke();
     }
+}
+[System.Serializable]
+public class ObterInteiro : UnityEvent<int>
+{
+
 }

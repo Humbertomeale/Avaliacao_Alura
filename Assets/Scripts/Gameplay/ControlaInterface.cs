@@ -29,7 +29,7 @@ public class ControlaInterface : MonoBehaviour{
 
     public void AtualizarSliderVidaJogador ()
     {
-        SliderVidaJogador.value = scriptControlaJogador.statusJogador.Vida;
+        SliderVidaJogador.value = scriptControlaJogador.statusJogador.VidaAtual();
     }
 
     public void AtualizarQuantidadeDeZumbisMortos ()

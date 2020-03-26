@@ -18,9 +18,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     private int danoMin = 20;
     [SerializeField]
     private int danoMax = 30;
-    private float ajusteProximidadeDestino = 0.05f;
-    [SerializeField]
-    private RangeInt tempoAleatório;
+    private float ajusteProximidadeDestino = 0.05f;   
     private ControlaInterface scriptControlaInterface;
     private MovimentoPersonagem movimentaInimigo;
     private AnimacaoPersonagem animacaoInimigo;
@@ -116,7 +114,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         return posicao;
     }
 
-    void AtacaJogador ()
+    private void AtacaJogador ()
     {
         int dano = Random.Range(danoMin, danoMax);
         Jogador.GetComponent<ControlaJogador>().TomarDano(dano);
@@ -155,11 +153,11 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     }
 
     private void VoltarParaReserva()
-    {
-       
+    {       
         this.reserva.DevolverObjeto(this.gameObject);
     }
-    void VerificarGeracaoKitMedico(float porcentagemGeracao)
+
+    private void VerificarGeracaoKitMedico(float porcentagemGeracao)
     {
         if (Random.value <= porcentagemGeracao)
         {
