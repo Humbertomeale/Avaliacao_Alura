@@ -26,7 +26,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     [SerializeField]
     private AudioClip SomDeMorte;
     private Vector3 posicaoAleatoria;
-    private Vector3 direcao;
+    private Vector3 direcao = Vector3.zero;
     private float contadorVagar;
     private IReservaDeObjetos reserva;
     private float tempoEntrePosicoesAleatorias = 4;
@@ -34,7 +34,10 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     [SerializeField]
     private GameObject KitMedicoPrefab;
     //---------//
-
+    //Unity Events//
+    [SerializeField]
+    private ObterInteiro aoSofrerDano;
+    //-----------//
     //Públicas//
     [HideInInspector]
     public GeradorZumbis meuGerador;
@@ -75,7 +78,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         {
             direcao = Jogador.transform.position - transform.position;
             movimentaInimigo.SetDirecao(direcao);
-            movimentaInimigo.Movimentar(statusInimigo.Velocidade);
+            movimentaInimigo.Movimentar(statusInimigo.VelocidadeDeMovimento());
 
             animacaoInimigo.Atacar(false);
         }
@@ -101,7 +104,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         {
             direcao = posicaoAleatoria - transform.position;
             movimentaInimigo.SetDirecao(direcao);
-            movimentaInimigo.Movimentar( statusInimigo.Velocidade);
+            movimentaInimigo.Movimentar( statusInimigo.VelocidadeDeMovimento());
         }           
     }
 
@@ -128,8 +131,9 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 
     public void TomarDano(int dano)
     {
-        statusInimigo.Vida -= dano;
-        if(statusInimigo.Vida <= 0)
+        aoSofrerDano.Invoke(dano);
+       // statusInimigo.Vida() -= dano;
+        if(statusInimigo.VidaAtual() <= 0)
         {
             Morrer();
         }

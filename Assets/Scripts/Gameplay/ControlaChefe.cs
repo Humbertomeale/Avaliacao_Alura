@@ -17,7 +17,11 @@ public class ControlaChefe : MonoBehaviour, IMatavel, IReservavel
     public Color CorDaVidaMaxima, CorDaVidaMinima;
     public GameObject ParticulaSangueZumbi;
     private IReservaDeObjetos reserva;
-
+    //-------------//
+    //Unity Events//
+    [SerializeField]
+    private ObterInteiro aoSofrerDano;
+    //-------------//
     private void Awake()
     {
         animacaoChefe = GetComponent<AnimacaoPersonagem>();
@@ -28,7 +32,7 @@ public class ControlaChefe : MonoBehaviour, IMatavel, IReservavel
     private void Start()
     {
         jogador = GameObject.FindWithTag("Jogador").transform;
-        agente.speed = statusChefe.Velocidade;
+        agente.speed = statusChefe.VelocidadeDeMovimento();
         sliderVidaChefe.maxValue = statusChefe.VidaInicial;
         AtualizarInterface();
     }
@@ -68,9 +72,10 @@ public class ControlaChefe : MonoBehaviour, IMatavel, IReservavel
 
     public void TomarDano(int dano)
     {
-        statusChefe.Vida -= dano;
+        //statusChefe.Vida -= dano;
+        aoSofrerDano.Invoke(dano);
         AtualizarInterface();
-        if (statusChefe.Vida <= 0)
+        if (statusChefe.VidaAtual() <= 0)
         {
             Morrer();
         }
@@ -98,8 +103,8 @@ public class ControlaChefe : MonoBehaviour, IMatavel, IReservavel
 
     void AtualizarInterface ()
     {
-        sliderVidaChefe.value = statusChefe.Vida;
-        float porcentagemDaVida = (float)statusChefe.Vida / statusChefe.VidaInicial;
+        sliderVidaChefe.value = statusChefe.VidaAtual();
+        float porcentagemDaVida = (float)statusChefe.VidaAtual() / statusChefe.VidaInicial;
         Color corDaVida = Color.Lerp(CorDaVidaMinima, CorDaVidaMaxima, porcentagemDaVida);
         ImagelSlider.color = corDaVida;
     }
@@ -115,7 +120,7 @@ public class ControlaChefe : MonoBehaviour, IMatavel, IReservavel
         this.movimentoChefe.Reiniciar();
         this.enabled = true;
         agente.enabled = true;
-        statusChefe.Vida = statusChefe.VidaInicial;
+        statusChefe.ResetVida();
     }
 
     public void AoSairDaReserva()

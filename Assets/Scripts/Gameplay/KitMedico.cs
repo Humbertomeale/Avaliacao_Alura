@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class KitMedico : MonoBehaviour
 {
+    [SerializeField]
     private int quantidadeDeCura = 15;
+    [SerializeField]
     private int tempoDeDestruicao = 5;
 
     private void Start()

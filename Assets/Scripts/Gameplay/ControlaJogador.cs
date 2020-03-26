@@ -12,18 +12,23 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     private Vector3 direcao;
     private MovimentoJogador meuMovimentoJogador;
     private AnimacaoPersonagem animacaoJogador;
+    private Status statusJogador;
     //---------//
     //Públicas//
-    public AudioClip SomDeDano;
-    public Status statusJogador;
+    [SerializeField]
+    private AudioClip somDeDano;
     //-------//
     //Eventos Unity//
+    [SerializeField]
+    private ObterFloatEvent movimetarJogador;
     [SerializeField]
     private UnityEvent aoMorrer;
     [SerializeField]
     private UnityEvent atualizandoBarraDeVida;
     [SerializeField]
     private ObterInteiro aoSofrerDano;
+    [SerializeField]
+    private ObterInteiro curandoJogador;
     //--------//
 
     //Métodos//
@@ -35,25 +40,24 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
         statusJogador = GetComponent<Status>();
     }
 
-    void Update()
+    private void Update()
     {
         
         animacaoJogador.Movimentar(this.meuMovimentoJogador.Direcao.magnitude);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        meuMovimentoJogador.Movimentar(statusJogador.Velocidade);
-        meuMovimentoJogador.RotacaoJogador();
+        movimetarJogador.Invoke(statusJogador.VelocidadeDeMovimento());
     }
 
+    //Metodos Públicos//
     public void TomarDano (int dano)
     {
         aoSofrerDano.Invoke(dano);
-        //statusJogador.Vida -= dano;
         atualizandoBarraDeVida.Invoke();
-        ControlaAudio.instancia.PlayOneShot(SomDeDano);
-        if(statusJogador.Vida <= 0)
+        ControlaAudio.instancia.PlayOneShot(somDeDano);      
+        if (statusJogador.VidaAtual() <= 0)
         {
             Morrer();
         }        
@@ -66,16 +70,12 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
 
     public void CurarVida (int quantidadeDeCura)
     {
-        statusJogador.Vida += quantidadeDeCura;
-        if(statusJogador.Vida > statusJogador.VidaInicial)
-        {
-            statusJogador.Vida = statusJogador.VidaInicial;
-        }
+        curandoJogador.Invoke(quantidadeDeCura);
         atualizandoBarraDeVida.Invoke();
     }
-}
-[System.Serializable]
-public class ObterInteiro : UnityEvent<int>
-{
 
+    public int VidaJogadorAtual()
+    {
+        return statusJogador.VidaAtual();
+    }
 }
