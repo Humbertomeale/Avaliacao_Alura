@@ -42,14 +42,8 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     [HideInInspector]
     public GeradorZumbis meuGerador;
     public GameObject ParticulaSangueZumbi;
-    //------//
-
-    //Métodos//
-
-    public void SetReserva(IReservaDeObjetos reserva)
-    {
-        this.reserva = reserva;
-    }
+    //------//   
+   
     private void Awake()
     {
         animacaoInimigo = GetComponent<AnimacaoPersonagem>();
@@ -88,6 +82,11 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 
             animacaoInimigo.Atacar(true);
         }
+    }
+
+    public void SetReserva(IReservaDeObjetos reserva)
+    {
+        this.reserva = reserva;
     }
 
     void Vagar ()

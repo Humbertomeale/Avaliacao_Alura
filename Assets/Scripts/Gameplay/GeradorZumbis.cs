@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GeradorZumbis : MonoBehaviour {
+    //Privadas//
     [SerializeField]
     private ReservaFixa reserva;
+    private float raioDeGeração = 1;
     private float contadorTempo = 0;
-    public float TempoGerarZumbi = 1;
-    public LayerMask LayerZumbi;
     private float distanciaDeGeracao = 3;
     private float DistanciaDoJogadorParaGeracao = 20;
     private GameObject jogador;
-
     private float tempoProximoAumentoDeDificuldade = 30;
     private float contadorDeAumentarDificuldade;
+    //----------//
+    //Píblicas//
+    public float TempoGerarZumbi = 1;
+    public LayerMask LayerZumbi;
+    //----------//
+
 
     private void Start()
     {
@@ -22,7 +27,7 @@ public class GeradorZumbis : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    private void Update () {
 
         bool possoGerarZumbisPelaDistancia = Vector3.Distance(transform.position,
             jogador.transform.position) >
@@ -53,7 +58,7 @@ public class GeradorZumbis : MonoBehaviour {
         Gizmos.DrawWireSphere(transform.position, distanciaDeGeracao);
     }
 
-    IEnumerator GerarNovoZumbi ()
+    private IEnumerator GerarNovoZumbi ()
     {
         Vector3 posicaoDeCriacao = AleatorizarPosicao();
         Collider[] colisores = Physics.OverlapSphere(posicaoDeCriacao, 1, LayerZumbi);
@@ -61,7 +66,7 @@ public class GeradorZumbis : MonoBehaviour {
         while(colisores.Length > 0)
         {
             posicaoDeCriacao = AleatorizarPosicao();
-            colisores = Physics.OverlapSphere(posicaoDeCriacao, 1, LayerZumbi);
+            colisores = Physics.OverlapSphere(posicaoDeCriacao, raioDeGeração, LayerZumbi);
             yield return null;
         }
         if (this.reserva.TemObjeto())

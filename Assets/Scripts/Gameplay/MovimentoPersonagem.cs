@@ -42,13 +42,13 @@ public class MovimentoPersonagem : MonoBehaviour
     {
         meuRigidbody.constraints = RigidbodyConstraints.None;
         meuRigidbody.velocity = Vector3.zero;
-        meuRigidbody.isKinematic = false;
+        meuRigidbody.isKinematic = true;
         GetComponent<Collider>().enabled = false;
     }
 
     public void Reiniciar()
     {
-        meuRigidbody.isKinematic = true;
+        meuRigidbody.isKinematic = false;
         GetComponent<Collider>().enabled = true;
     }
 }

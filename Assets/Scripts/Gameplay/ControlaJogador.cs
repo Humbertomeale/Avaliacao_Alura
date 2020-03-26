@@ -13,10 +13,11 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     private MovimentoJogador meuMovimentoJogador;
     private AnimacaoPersonagem animacaoJogador;
     private Status statusJogador;
-    //---------//
-    //Públicas//
     [SerializeField]
     private AudioClip somDeDano;
+    //---------//
+    //Públicas//
+
     //-------//
     //Eventos Unity//
     [SerializeField]
