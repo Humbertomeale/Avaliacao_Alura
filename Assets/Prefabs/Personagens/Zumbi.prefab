@@ -660,6 +660,9 @@ MonoBehaviour:
   porcentagemGerarKitMedico: 0.3
   KitMedicoPrefab: {fileID: 1060151288946202, guid: 6150c6f66b7034ec5b3672478195682a,
     type: 3}
+  ParticulaSangueZumbi: {fileID: 1713889116999138, guid: 0bd0cf4e7bc90db4cb1f45c4a9b7e07a,
+    type: 3}
+  meuGerador: {fileID: 0}
   aoSofrerDano:
     m_PersistentCalls:
       m_Calls:
@@ -710,9 +713,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  meuGerador: {fileID: 0}
-  ParticulaSangueZumbi: {fileID: 1713889116999138, guid: 0bd0cf4e7bc90db4cb1f45c4a9b7e07a,
-    type: 3}
+      - m_Target: {fileID: 114480877788707542}
+        m_MethodName: TocarSomMorte
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &114899746834038156
 MonoBehaviour:
   m_ObjectHideFlags: 0

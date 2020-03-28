@@ -152,9 +152,13 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         Invoke("VoltarParaReserva", 2);
         aoMorrer.Invoke();
         this.enabled = false;
-        ControlaAudio.instancia.PlayOneShot(SomDeMorte);
+
         scriptControlaInterface.AtualizarQuantidadeDeZumbisMortos();
         
+    }
+    public void TocarSomMorte()
+    {
+        ControlaAudio.instancia.PlayOneShot(SomDeMorte);
     }
 
     public void VerificarGeracaoKitMedico()
