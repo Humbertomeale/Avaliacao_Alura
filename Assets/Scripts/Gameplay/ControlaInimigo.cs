@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
 {
-    //Variáveis//
-
     //Privadas//
     private GameObject Jogador;
     [SerializeField]
@@ -20,7 +18,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     [SerializeField]
     private int danoMax = 30;
     private float ajusteProximidadeDestino = 0.05f;   
-    private ControlaInterface scriptControlaInterface;
+    private Pontuador marcadorDePontos;
     private MovimentoPersonagem movimentaInimigo;
     private AnimacaoPersonagem animacaoInimigo;
     private Status statusInimigo;
@@ -61,7 +59,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         Jogador = GameObject.FindWithTag("Jogador");
         AleatorizarZumbi();
         statusInimigo = GetComponent<Status>();
-        scriptControlaInterface = FindObjectOfType(typeof(ControlaInterface)) as ControlaInterface;
+        marcadorDePontos = FindObjectOfType(typeof(Pontuador)) as Pontuador;
     }
     //--------//
 
@@ -152,9 +150,12 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         Invoke("VoltarParaReserva", 2);
         aoMorrer.Invoke();
         this.enabled = false;
-
-        scriptControlaInterface.AtualizarQuantidadeDeZumbisMortos();
         
+    }
+
+    public void MarcarPonto()
+    {
+        marcadorDePontos.AdicionarPontos();
     }
     public void TocarSomMorte()
     {

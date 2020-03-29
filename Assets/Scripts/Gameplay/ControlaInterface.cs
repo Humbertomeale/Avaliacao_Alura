@@ -7,12 +7,14 @@ using UnityEngine.SceneManagement;
 public class ControlaInterface : MonoBehaviour{
 
     private ControlaJogador scriptControlaJogador;
+    [SerializeField]
+    private string cenaDeGameover;
     public Slider SliderVidaJogador;
     public GameObject PainelDeGameOver;
     public Text TextoTempoDeSobrevivencia;
     public Text TextoPontuacaoMaxima;
     private float tempoPontuacaoSalvo;
-    private int quantidadeDeZumbisMortos;
+
     public Text TextoQuantidadeDeZumbisMortos;
     public Text TextoChefeAparece;
 
@@ -32,11 +34,7 @@ public class ControlaInterface : MonoBehaviour{
         SliderVidaJogador.value = scriptControlaJogador.VidaJogadorAtual();
     }
 
-    public void AtualizarQuantidadeDeZumbisMortos ()
-    {
-        quantidadeDeZumbisMortos++;
-        TextoQuantidadeDeZumbisMortos.text = string.Format("x {0}", quantidadeDeZumbisMortos);
-    }
+
 
     public void GameOver ()
     {
@@ -71,7 +69,7 @@ public class ControlaInterface : MonoBehaviour{
 
     public void Reiniciar ()
     {
-        SceneManager.LoadScene("game");
+        SceneManager.LoadScene(cenaDeGameover);
     }
 
     public void AparecerTextoChefeCriado ()
