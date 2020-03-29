@@ -19,11 +19,13 @@ public class MenuDePausa : MonoBehaviour
     //Evestos Unity//
     [SerializeField]
     private UnityEvent aoClicar;
+
     //-------//
 
     private void Start()
     {
         meuIcone = GetComponent<Image>();
+
     }
 
     public void Clicando()

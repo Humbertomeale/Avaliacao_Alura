@@ -17,6 +17,11 @@ public class AjustesDeAudio : MonoBehaviour
 
     private void Start()
     {
+        CarregarPreDefinicoes();
+    }
+
+    private void CarregarPreDefinicoes()
+    {
         if (PlayerPrefs.HasKey(CanalDeAudio))// verifica se algo foi salvo com o nome do parametroDeAudio atual
         {
             MesaDeSom.SetFloat(CanalDeAudio, PlayerPrefs.GetFloat(CanalDeAudio));
