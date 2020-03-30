@@ -4940,7 +4940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 244e31dfa464145479ae4242a4b7be6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempoEntreGeracoes: 120
+  tempoEntreGeracoes: 10
   reservaDeChefes: {fileID: 1844694646}
   PosicoesPossiveisDeGeracao:
   - {fileID: 179833689}
@@ -7214,6 +7214,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5908380477637019801, guid: 3fd6c49abd8b70fd385528278ee35d80,
         type: 2}
+    - target: {fileID: 1665214593, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
+      propertyPath: VidaInicial
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 1884102019447498, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
       propertyPath: m_Name
       value: Jogador
@@ -8406,9 +8410,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  escreverTempoDeJogo:
-    m_PersistentCalls:
-      m_Calls: []
   SliderVidaJogador: {fileID: 727151013}
   PainelDeGameOver: {fileID: 1518546017}
   TextoChefeAparece: {fileID: 1915470987}
