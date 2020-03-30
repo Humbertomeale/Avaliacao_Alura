@@ -10,17 +10,20 @@ public class Pontuador : MonoBehaviour
 
     [SerializeField]
     private ObterInteiro atualisarPontuacao;
+    [SerializeField]
+    private ObterStringEvent tempoDeJogoFormatado;
 
-    public void AdicionarPontos()
+    public void AdicionarPontos()//Armazena a pontuação total.
     {
         pontos++;
         atualisarPontuacao.Invoke(pontos);
         //Debug.Log(pontos);
     }
 
-    public void RegistrarTempoDeJogo(float tempo)
+    public void RegistrarTempoDeJogo()//armazena tempo total decorrido bruto.
     {
-        tempoDeJogo = tempo;
+        tempoDeJogo = Time.timeSinceLevelLoad;
+        tempoDeJogoFormatado.Invoke(TempoDeJogoFinalConvertido());
     }
     //---------//
     //Retorno de Dados//
@@ -30,8 +33,14 @@ public class Pontuador : MonoBehaviour
 
     }
 
-    public float TempoDeJogoFinal()
+    //Converte o tempo em segundos para o formato minutos/segundos.
+    public string TempoDeJogoFinalConvertido()
     {
-        return tempoDeJogo;
+        var tempoTotalSegundos = Time.timeSinceLevelLoad;
+        var minutos = (int)tempoTotalSegundos / 60;
+        var segundos = (int)tempoTotalSegundos % 60;
+
+        string tempo = string.Format("{0}min e {1}s", minutos, segundos);
+        return tempo;
     }
 }
