@@ -8,6 +8,11 @@ public class ControleDedados : MonoBehaviour
 {
     //Privadas//
     private Pontuador pontuaçãoFinal;
+    private int pontos;
+    private string tempo;
+    private string nomeJogador;
+    [SerializeField]
+    private string nomeChavePlayerPref;
     //---------//
     private void Awake()
     {
@@ -17,18 +22,45 @@ public class ControleDedados : MonoBehaviour
     void Start()
     {
         pontuaçãoFinal = FindObjectOfType<Pontuador>();
-        Debug.Log(pontuaçãoFinal.Pontuacao());
+        if (pontuaçãoFinal == null)
+        {
+            pontos = Random.Range(10,50);
+            tempo = "1d:24h:59m:59s";
+        }
+        else
+        {
+            pontos = pontuaçãoFinal.Pontuacao();
+            tempo = pontuaçãoFinal.TempoDeJogoFinalConvertido();
+        }
+        if (PlayerPrefs.HasKey(nomeChavePlayerPref))
+        {
+            nomeJogador = PlayerPrefs.GetString(nomeChavePlayerPref);
+        }
+        else
+        {
+            nomeJogador = "CallMeSusie";
+            Debug.Log(nomeJogador);
+        }
+    }
+
+    public string Nome()
+    {
+        return nomeJogador;
     }
 
     public int Pontos()
     {
-        var pts = pontuaçãoFinal.Pontuacao();
-        return pts;
+        return pontos;
     }
 
     public string Tempo()
     {
-        var t = pontuaçãoFinal.TempoDeJogoFinalConvertido();
-        return t;
+        return tempo;
+    }
+
+    public void AlterarNomeJogador(string nome)
+    {
+        nomeJogador = nome;
+        PlayerPrefs.SetString(nomeChavePlayerPref, nome);
     }
 }
