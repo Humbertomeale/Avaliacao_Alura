@@ -15,6 +15,7 @@ public class SalvadorDePlacar : MonoBehaviour
     private string caminhoParaOArquivo;
     [SerializeField]
     private List<ListaDeColocados> lista;
+
     //-------//
 
     private void Awake()

@@ -23,4 +23,13 @@ public class LinhaDeDados : MonoBehaviour
 
 
     }
+
+    public void AtualizarNome(string novoNome)
+    {
+        textoNome.text = novoNome;
+    }
+    public string getNome()
+    {
+        return textoNome.text;
+    }
 }

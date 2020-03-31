@@ -14,6 +14,11 @@ public class MostrarRegistro : MonoBehaviour
     private GameObject painelRanking;
     [SerializeField]
     private SalvadorDePlacar listaDeJogadores;
+    private string iD;
+    [SerializeField]
+    private int numeroVisivelDeLinhas = 5;
+    private string antigoNome;
+
     //---------//
     //Unity events//
     [SerializeField]
@@ -36,6 +41,7 @@ public class MostrarRegistro : MonoBehaviour
         {
             listaDeJogadores = GetComponent<SalvadorDePlacar>();
         }
+
     }
 
     private void Start()
@@ -43,8 +49,10 @@ public class MostrarRegistro : MonoBehaviour
         AtualizarPontos();
         AtualizarTempo();
         AtualizarNome();
-        listaDeJogadores.AdicionarColocacao(dados.Nome(), dados.Tempo(), dados.Pontos());
-        var quantidade = listaDeJogadores.Quantidade();
+        iD = listaDeJogadores.AdicionarColocacao(dados.Nome(), dados.Tempo(), dados.Pontos());
+        antigoNome = dados.Nome();
+        gerarLista();
+        /*var quantidade = listaDeJogadores.Quantidade();
         var listaDeColocados = listaDeJogadores.PegarColocados();
         for (var i = 0; i < listaDeColocados.Count; i++)
         {
@@ -54,7 +62,39 @@ public class MostrarRegistro : MonoBehaviour
             }
             preFabLinhas.GetComponent<LinhaDeDados>().Configurar(i + 1, listaDeColocados[i].Nome,listaDeColocados[i].Tempo, listaDeColocados[i].Pontos);
             Instantiate(preFabLinhas, painelRanking.transform);
+        }*/
+    }
 
+    private void gerarLista()
+    {
+        var quantidade = listaDeJogadores.Quantidade();
+        var listaDeColocados = listaDeJogadores.PegarColocados();
+        for (var i = 0; i < listaDeColocados.Count; i++)
+        {
+            if (i >= numeroVisivelDeLinhas)
+            {
+                break;
+            }
+            preFabLinhas.GetComponent<LinhaDeDados>().Configurar(i + 1, listaDeColocados[i].Nome, listaDeColocados[i].Tempo, listaDeColocados[i].Pontos);
+            Instantiate(preFabLinhas, painelRanking.transform);
+
+
+        }
+    }
+
+    private void mudarValorNaLista(string novoNome)
+    {
+        int children = painelRanking.transform.childCount;
+        for (int i = 0; i < children; ++i)
+        {
+            var linha = painelRanking.GetComponentInChildren<LinhaDeDados>();
+            var n = linha.getNome();
+            if(n == antigoNome)
+            {
+                linha.AtualizarNome(dados.Nome());
+                antigoNome = dados.Nome();
+                break;
+            }
         }
     }
 
@@ -69,6 +109,8 @@ public class MostrarRegistro : MonoBehaviour
     public void AtualizarNome()
     {
         atualizaNome.Invoke(dados.Nome());
+        listaDeJogadores.AlterarNome(dados.Nome(),iD);
+        mudarValorNaLista(dados.Nome());
     }
 
 }
