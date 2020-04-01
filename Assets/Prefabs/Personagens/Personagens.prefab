@@ -41,7 +41,8 @@ AudioSource:
   m_GameObject: {fileID: 595983649}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5908380477637019801, guid: 3fd6c49abd8b70fd385528278ee35d80,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 22837b59cf9842348a2a750377861609, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -3112,6 +3113,7 @@ GameObject:
   - component: {fileID: 114343259226597284}
   - component: {fileID: 114616175796600440}
   - component: {fileID: 1665214593}
+  - component: {fileID: 1665214585}
   m_Layer: 0
   m_Name: Personagens
   m_TagString: Jogador
@@ -3295,7 +3297,7 @@ Rigidbody:
   m_GameObject: {fileID: 1884102019447498}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.2
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -3353,8 +3355,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26899c8c198bfcd46a8357330ef1e3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VidaInicial: 100
+  VidaInicial: 1000
   Velocidade: 10
+--- !u!81 &1665214585
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884102019447498}
+  m_Enabled: 1
 --- !u!1 &1938851689004064
 GameObject:
   m_ObjectHideFlags: 0
