@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class ultimoEstadoJogador : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool faseInicial = true;
+    private int vidaJogador;
+
+    public int ValorAnteriorDaVida()
     {
-        
+        return vidaJogador;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RegistrarVida(int vida)
     {
-        
+        vidaJogador = vida;
+        faseInicial = false;
+        /*Debug.Log("registrei");
+        Debug.Log(vida);
+        Debug.Log(faseInicial);*/
+    }
+
+    public bool PrimeiraFase()
+    {
+        return faseInicial;
     }
 }

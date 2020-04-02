@@ -12,12 +12,19 @@ public class Pontuador : MonoBehaviour
     private ObterInteiro atualisarPontuacao;
     [SerializeField]
     private ObterStringEvent tempoDeJogoFormatado;
+    private ControlaInterface minhaInterfaceDeJogo;
 
     public void AdicionarPontos()//Armazena a pontuação total.
     {
         pontos++;
-        atualisarPontuacao.Invoke(pontos);
+        minhaInterfaceDeJogo.AtualizarPontuacao();
+
         //Debug.Log(pontos);
+    }
+
+    public void AdicionarInterface(ControlaInterface interfaceJogo)
+    {
+        minhaInterfaceDeJogo = interfaceJogo;
     }
 
     public void RegistrarTempoDeJogo()//armazena tempo total decorrido bruto.

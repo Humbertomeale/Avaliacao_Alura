@@ -60,6 +60,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
         AleatorizarZumbi();
         statusInimigo = GetComponent<Status>();
         marcadorDePontos = FindObjectOfType(typeof(Pontuador)) as Pontuador;
+
     }
     //--------//
 
@@ -156,6 +157,7 @@ public class ControlaInimigo : MonoBehaviour, IMatavel, IReservavel
     public void MarcarPonto()
     {
         marcadorDePontos.AdicionarPontos();
+        //Debug.Log("Marquei meu ponto");
     }
     public void TocarSomMorte()
     {

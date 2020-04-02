@@ -5,7 +5,6 @@ using UnityEngine;
 public class Status : MonoBehaviour
 {
     public int VidaInicial = 100;
-    [HideInInspector]
     private int Vida;
     [SerializeField]
     private float Velocidade = 5;
@@ -15,10 +14,14 @@ public class Status : MonoBehaviour
         Vida = VidaInicial;
     }
 
+    public void ConfigurandoVidaAtual(int vida)
+    {
+        Vida = vida;       
+    }
+
     public void CalculandoDano(int dn)
     {
         Vida -= dn;
-        //Debug.Log(dn);
     }
 
     public void CalculandoCura(int cura)

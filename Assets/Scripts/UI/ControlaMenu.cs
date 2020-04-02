@@ -19,10 +19,10 @@ public class ControlaMenu : MonoBehaviour
         StartCoroutine(MudarCena("game"));
     }
 
-    IEnumerator MudarCena(string name)
+    IEnumerator MudarCena(string nome)
     {
         yield return new WaitForSecondsRealtime(0.3f);
-        SceneManager.LoadScene(name);
+        SceneManager.LoadScene(nome);
     }
 
     public void SairDoJogo ()

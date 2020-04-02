@@ -15,6 +15,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     private Status statusJogador;
     [SerializeField]
     private AudioClip somDeDano;
+    private ultimoEstadoJogador registroDeStatus;
     //---------//
     //Públicas//
 
@@ -40,6 +41,14 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
         meuMovimentoJogador = GetComponent<MovimentoJogador>();
         animacaoJogador = GetComponent<AnimacaoPersonagem>();
         statusJogador = GetComponent<Status>();
+        registroDeStatus = FindObjectOfType<ultimoEstadoJogador>();
+       /* if (registroDeStatus.PrimeiraFase()==false)//redundância para evitar erros de carregamento... Espero!
+        {
+            statusJogador.ConfigurandoVidaAtual(registroDeStatus.ValorAnteriorDaVida());
+            Debug.Log("atualizei");
+            Debug.Log(registroDeStatus.ValorAnteriorDaVida());
+            atualizandoBarraDeVida.Invoke();
+        }*/
     }
 
     private void Update()
@@ -54,6 +63,11 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     }
 
     //Metodos Públicos//
+    public int VidaMaxima()
+    {
+        return statusJogador.VidaInicial;
+    }
+
     public void TomarDano (int dano)
     {
         aoSofrerDano.Invoke(dano);
@@ -79,5 +93,11 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     public int VidaJogadorAtual()
     {
         return statusJogador.VidaAtual();
+    }
+
+    public void RegistrarUltimoEstado()
+    {
+        registroDeStatus.RegistrarVida(statusJogador.VidaAtual());
+
     }
 }

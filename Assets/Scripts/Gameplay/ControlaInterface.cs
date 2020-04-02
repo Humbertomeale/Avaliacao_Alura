@@ -21,19 +21,40 @@ public class ControlaInterface : MonoBehaviour{
     private GameObject painelDeFimDeFase;
     [SerializeField]
     private Text TextoChefeAparece;
+    private Pontuador meuPontuador;
     //---------//
-    //Unity Events//
+    //Unity Events//   
     [SerializeField]
-    private UnityEvent tempoDeJogo;
+    private ObterInteiro pontuacaoAtual;
+    [SerializeField]
+    private ObterStringEvent tempoFinalFormatado;
     //--------//
 
 	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+
+    }
+
+    void Start () {
         scriptControlaJogador = GameObject.FindWithTag("Jogador").GetComponent<ControlaJogador>();
         SliderVidaJogador.maxValue = scriptControlaJogador.VidaJogadorAtual();
         AtualizarSliderVidaJogador();
-        Time.timeScale = 1;
-        tempoPontuacaoSalvo = PlayerPrefs.GetFloat("PontuacaoMaxima");
+        Time.timeScale = 1;       
+       //meuPontuador = FindObjectOfType<Pontuador>();
+        meuPontuador= FindObjectOfType(typeof(Pontuador)) as Pontuador;
+        meuPontuador.AdicionarInterface(this);
+        AtualizarPontuacao();
+        if (meuPontuador.GetComponent<ultimoEstadoJogador>().PrimeiraFase() == false)
+        {
+            scriptControlaJogador.GetComponent<Status>().ConfigurandoVidaAtual(
+            meuPontuador.GetComponent<ultimoEstadoJogador>().ValorAnteriorDaVida());
+            AtualizarSliderVidaJogador();
+        }
+        else
+        {
+            //AtualizarSliderVidaJogador();
+        }
     }
 
     public void AtualizarSliderVidaJogador ()
@@ -41,16 +62,25 @@ public class ControlaInterface : MonoBehaviour{
         SliderVidaJogador.value = scriptControlaJogador.VidaJogadorAtual();
     }
 
+    public void AtualizarPontuacao()
+    {
+        pontuacaoAtual.Invoke(meuPontuador.Pontuacao());
+    }
+
     public void GameOver ()
     {
         PainelDeGameOver.SetActive(true);
-        tempoDeJogo.Invoke();
+        meuPontuador.RegistrarTempoDeJogo();
+        tempoFinalFormatado.Invoke(meuPontuador.TempoDeJogoFinalConvertido());
+
         Time.timeScale = 0;
     }
 
     public void PasseiDeFase()
     {
         painelDeFimDeFase.SetActive(true);
+        scriptControlaJogador.RegistrarUltimoEstado();
+
         Time.timeScale = 0;
     }
 
