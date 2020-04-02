@@ -7,22 +7,24 @@ using UnityEngine.SceneManagement;
 
 public class ControlaInterface : MonoBehaviour{
     //privadas//
+    [SerializeField]
+    private string proximoNivel;
     private ControlaJogador scriptControlaJogador;
     [SerializeField]
     private string cenaDeGameover;
     private float tempoPontuacaoSalvo;
-    //---------//
-    //Unity Events//
-    [SerializeField]
-    private UnityEvent tempoDeJogo;
-    //---------//
-    //Publicas//
     [SerializeField]
     private Slider SliderVidaJogador;
     [SerializeField]
     private GameObject PainelDeGameOver;
     [SerializeField]
+    private GameObject painelDeFimDeFase;
+    [SerializeField]
     private Text TextoChefeAparece;
+    //---------//
+    //Unity Events//
+    [SerializeField]
+    private UnityEvent tempoDeJogo;
     //--------//
 
 	// Use this for initialization
@@ -46,9 +48,20 @@ public class ControlaInterface : MonoBehaviour{
         Time.timeScale = 0;
     }
 
+    public void PasseiDeFase()
+    {
+        painelDeFimDeFase.SetActive(true);
+        Time.timeScale = 0;
+    }
+
     public void Reiniciar ()
     {
         SceneManager.LoadScene(cenaDeGameover);
+    }
+
+    public void ProximoNivel()
+    {
+        SceneManager.LoadScene(proximoNivel);
     }
 
     public void AparecerTextoChefeCriado ()
