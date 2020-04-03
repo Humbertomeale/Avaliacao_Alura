@@ -3355,7 +3355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26899c8c198bfcd46a8357330ef1e3d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VidaInicial: 1000
+  VidaInicial: 200
   Velocidade: 10
 --- !u!81 &1665214585
 AudioListener:

@@ -28,15 +28,17 @@ public class ControlaInterface : MonoBehaviour{
     private ObterInteiro pontuacaoAtual;
     [SerializeField]
     private ObterStringEvent tempoFinalFormatado;
+    [SerializeField]
+    private ObterInteiro valorDobonus;
+    [SerializeField]
+    private ObterInteiro pontosObtidos;
+    [SerializeField]
+    private ObterInteiro totalDePontos;
+    [SerializeField]
+    private ObterStringEvent painelFimDeFaseTempoDeJogo;
     //--------//
 
-	// Use this for initialization
-    private void Awake()
-    {
-
-    }
-
-    void Start () {
+	void Start () {
         scriptControlaJogador = GameObject.FindWithTag("Jogador").GetComponent<ControlaJogador>();
         SliderVidaJogador.maxValue = scriptControlaJogador.VidaJogadorAtual();
         AtualizarSliderVidaJogador();
@@ -51,10 +53,7 @@ public class ControlaInterface : MonoBehaviour{
             meuPontuador.GetComponent<ultimoEstadoJogador>().ValorAnteriorDaVida());
             AtualizarSliderVidaJogador();
         }
-        else
-        {
-            //AtualizarSliderVidaJogador();
-        }
+
     }
 
     public void AtualizarSliderVidaJogador ()
@@ -71,7 +70,8 @@ public class ControlaInterface : MonoBehaviour{
     {
         PainelDeGameOver.SetActive(true);
         meuPontuador.RegistrarTempoDeJogo();
-        tempoFinalFormatado.Invoke(meuPontuador.TempoDeJogoFinalConvertido());
+        var textoTempo = meuPontuador.TempoDeJogoFinalConvertido();
+        tempoFinalFormatado.Invoke(textoTempo);
 
         Time.timeScale = 0;
     }
@@ -80,6 +80,12 @@ public class ControlaInterface : MonoBehaviour{
     {
         painelDeFimDeFase.SetActive(true);
         scriptControlaJogador.RegistrarUltimoEstado();
+        meuPontuador.RegistrarTempoDeJogo();
+        painelFimDeFaseTempoDeJogo.Invoke(meuPontuador.TempoDeJogoFinalConvertido());
+        pontosObtidos.Invoke(meuPontuador.Pontuacao());
+        meuPontuador.AdicionarPontosBonus();
+        valorDobonus.Invoke(meuPontuador.Bonus());
+        totalDePontos.Invoke(meuPontuador.Pontuacao());
 
         Time.timeScale = 0;
     }

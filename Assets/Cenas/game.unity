@@ -2591,18 +2591,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ffe1bdcc4b5440768c45450fcade542, type: 3}
---- !u!114 &417459473 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7378937295532952793, guid: dae152cc737277587a9993f1a73502a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7378937295950209480}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6379654fe68c799eabbdec3c6839c100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &418712907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5538,34 +5526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a520bc69dfd5d57ae8bc0a3eab2147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  atualisarPontuacao:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 417459473}
-        m_MethodName: AtualizarTexto
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  tempoDeJogoFormatado:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1985104277}
-        m_MethodName: AtualizarTexto
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  pontosBonusFimDeFase: 15
 --- !u!114 &957690595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10846,18 +10807,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1979938781}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1985104277 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7378937297387661405, guid: dae152cc737277587a9993f1a73502a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7378937295950209480}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6379654fe68c799eabbdec3c6839c100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1998616351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4791428832001672, guid: 0b76d7f1a737248a59eb5b1fef8f7ba4,
