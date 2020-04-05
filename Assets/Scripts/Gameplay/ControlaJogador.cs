@@ -24,6 +24,8 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     [SerializeField]
     private ObterFloatEvent movimetarJogador;
     [SerializeField]
+    private UnityEvent rotacionarJogador;
+    [SerializeField]
     private UnityEvent aoMorrer;
     [SerializeField]
     private UnityEvent atualizandoBarraDeVida;
@@ -41,14 +43,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
         meuMovimentoJogador = GetComponent<MovimentoJogador>();
         animacaoJogador = GetComponent<AnimacaoPersonagem>();
         statusJogador = GetComponent<Status>();
-        registroDeStatus = FindObjectOfType<ultimoEstadoJogador>();
-       /* if (registroDeStatus.PrimeiraFase()==false)//redundância para evitar erros de carregamento... Espero!
-        {
-            statusJogador.ConfigurandoVidaAtual(registroDeStatus.ValorAnteriorDaVida());
-            Debug.Log("atualizei");
-            Debug.Log(registroDeStatus.ValorAnteriorDaVida());
-            atualizandoBarraDeVida.Invoke();
-        }*/
+        registroDeStatus = FindObjectOfType<ultimoEstadoJogador>();       
     }
 
     private void Update()
@@ -60,6 +55,7 @@ public class ControlaJogador : MonoBehaviour, IMatavel, ICuravel
     private void FixedUpdate()
     {
         movimetarJogador.Invoke(statusJogador.VelocidadeDeMovimento());
+        rotacionarJogador.Invoke();
     }
 
     //Metodos Públicos//
