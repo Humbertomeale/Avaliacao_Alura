@@ -4,9 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InputTecladoMouse : MonoBehaviour
 {
+    [SerializeField]
+    private MenuDePausa menu;
+    [SerializeField]
+    private string botaoPausa = "Cancel";
     [SerializeField]
     private GameObject jogador;
     [SerializeField]
@@ -17,10 +22,10 @@ public class InputTecladoMouse : MonoBehaviour
     private MeuEventoDinamicoVector3 mouseDirecao;
     [SerializeField]
     private MeuEventoDinamicoVector3 movimentoDirecao;
-   // Start is called before the first frame update
+  
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,13 +38,24 @@ public class InputTecladoMouse : MonoBehaviour
         mouseDirecao.Invoke(rotacao);
         movimentoDirecao.Invoke(direcao);
         //Debug.Log(rotacao);
+        StartCoroutine(botaoDePausa());
     }
 
 
     public Vector3 DirecaoDeMovimento()
     {
+        
         return direcao;
     }
+
+    private IEnumerator botaoDePausa()
+    {
+        if (Input.GetButtonDown(botaoPausa))
+        {
+            menu.LigaDesliga();
+        }
+        yield return null;
+    }   
 
     public void RotacaoJogador(LayerMask MascaraChao)
     {

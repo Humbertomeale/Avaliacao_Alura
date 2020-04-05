@@ -4,42 +4,57 @@ using UnityEngine;
 
 public class Bala : MonoBehaviour, IReservavel
 {
-
-    public float Velocidade = 20;
+    //Privadas//
+    [SerializeField]
+    private float velocidade = 20;
+    [SerializeField]
+    private int danoDaBala = 1;
     private Rigidbody rigidbodyBala;
-    public AudioClip SomDeMorte;
-
     private IReservaDeObjetos reserva;
-
-    public void SetReserva(IReservaDeObjetos reserva)
-    {
-        this.reserva = reserva;
-    }
+    //-------//
+    //Públicas//
+    public AudioClip SomDeMorte;
+    //-------//
 
     private void Start()
     {
         rigidbodyBala = GetComponent<Rigidbody>();
     }
 
-    void FixedUpdate () {
+    void FixedUpdate()
+    {
         rigidbodyBala.MovePosition
-            (rigidbodyBala.position + 
-            transform.forward * Velocidade * Time.deltaTime);
-	}
+            (rigidbodyBala.position +
+            transform.forward * velocidade * Time.deltaTime);
+    }
 
-    void OnTriggerEnter(Collider objetoDeColisao)
+    public void SetReserva(IReservaDeObjetos reserva)
+    {
+        this.reserva = reserva;
+    }
+
+    public void MudarDanoDaBala(int dano)
+    {
+        danoDaBala = dano;
+    }
+
+    public void MudarVelocidadeDaBala(float v)
+    {
+        velocidade = v;
+    }
+    private void OnTriggerEnter(Collider objetoDeColisao)
     {
         Quaternion rotacaoOpostaABala = Quaternion.LookRotation(-transform.forward);
         switch(objetoDeColisao.tag)
         {
             case "Inimigo":
                 ControlaInimigo inimigo = objetoDeColisao.GetComponent<ControlaInimigo>();
-                inimigo.TomarDano(1);
+                inimigo.TomarDano(danoDaBala);
                 inimigo.ParticulaSangue(transform.position, rotacaoOpostaABala);
                 break;
             case "ChefeDeFase":
                 ControlaChefe chefe = objetoDeColisao.GetComponent<ControlaChefe>();
-                chefe.TomarDano(1);
+                chefe.TomarDano(danoDaBala);
                 chefe.ParticulaSangue(transform.position, rotacaoOpostaABala);
             break;
         }

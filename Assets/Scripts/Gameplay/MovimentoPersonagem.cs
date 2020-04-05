@@ -21,12 +21,12 @@ public class MovimentoPersonagem : MonoBehaviour
     {
         this.Direcao = direcao.normalized;
     }
+
     public void Movimentar (float velocidade)
     {
         meuRigidbody.MovePosition(
                 meuRigidbody.position +
                 Direcao * velocidade * Time.deltaTime);
-        
     }
 
     public void Rotacionar (Vector3 direcao)
