@@ -42,6 +42,7 @@ public class ControlaChefe : MonoBehaviour, IMatavel, IReservavel
         this.transform.position = posicao;
         this.agente.Warp(posicao);
     }
+
     private void Update()
     {
         agente.SetDestination(jogador.position);
@@ -126,5 +127,6 @@ public class ControlaChefe : MonoBehaviour, IMatavel, IReservavel
     public void AoSairDaReserva()
     {
         this.gameObject.SetActive(true);
+        AtualizarInterface();
     }
 }
