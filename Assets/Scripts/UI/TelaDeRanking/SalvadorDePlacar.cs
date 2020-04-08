@@ -15,6 +15,8 @@ public class SalvadorDePlacar : MonoBehaviour
     private string caminhoParaOArquivo;
     [SerializeField]
     private List<ListaDeColocados> lista;
+    private string IdAtual;
+
 
     //-------//
 
@@ -39,6 +41,7 @@ public class SalvadorDePlacar : MonoBehaviour
     public string AdicionarColocacao(string nome, string tempo, int pontos)
     {
         string id = GerarID();
+        IdAtual = id;
         var novoColocado = new ListaDeColocados(id, nome, tempo, pontos);
         lista.Add(novoColocado);
         lista.Sort();
@@ -81,8 +84,6 @@ public class SalvadorDePlacar : MonoBehaviour
         }
         salvarDados();
     }
-
-
 }
 [System.Serializable]
 public class ListaDeColocados:IComparable

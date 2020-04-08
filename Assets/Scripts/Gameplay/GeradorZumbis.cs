@@ -46,7 +46,6 @@ public class GeradorZumbis : MonoBehaviour {
         
         if(Time.timeSinceLevelLoad > contadorDeAumentarDificuldade)
         {
-            
             contadorDeAumentarDificuldade = Time.timeSinceLevelLoad + 
                 tempoProximoAumentoDeDificuldade;
         }
@@ -62,7 +61,6 @@ public class GeradorZumbis : MonoBehaviour {
     {
         Vector3 posicaoDeCriacao = AleatorizarPosicao();
         Collider[] colisores = Physics.OverlapSphere(posicaoDeCriacao, 1, LayerZumbi);
-
         while(colisores.Length > 0)
         {
             posicaoDeCriacao = AleatorizarPosicao();
@@ -85,8 +83,6 @@ public class GeradorZumbis : MonoBehaviour {
         Vector3 posicao = Random.insideUnitSphere * distanciaDeGeracao;
         posicao += transform.position;
         posicao.y = 0;
-
         return posicao;
     }
-    
 }

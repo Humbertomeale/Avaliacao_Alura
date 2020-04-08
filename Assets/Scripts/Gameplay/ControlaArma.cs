@@ -36,6 +36,9 @@ public class ControlaArma : MonoBehaviour
     {
         ConfigurarArma(armaSlot_01);
         slot01Ativo = true;
+#if UNITY_ANDROID
+        nomeDaArmaUI.Invoke(nomeDaArama);
+#endif
     }
 
     public void AlternarSlots()

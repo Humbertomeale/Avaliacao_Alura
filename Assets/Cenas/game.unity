@@ -4524,12 +4524,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf4e53320739441f58d231c2ee884b66, type: 3}
---- !u!1 &788300738 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1303040283, guid: dae152cc737277587a9993f1a73502a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7378937295950209480}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &803807068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6434,18 +6428,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b76d7f1a737248a59eb5b1fef8f7ba4, type: 3}
---- !u!114 &1175395472 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1175395472, guid: dae152cc737277587a9993f1a73502a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7378937295950209480}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6379654fe68c799eabbdec3c6839c100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1178924254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6453,10 +6435,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1665214593, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
-      propertyPath: VidaInicial
-      value: 2000
-      objectReference: {fileID: 0}
     - target: {fileID: 1884102019447498, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
       propertyPath: m_Name
       value: Jogador
@@ -6529,12 +6507,17 @@ PrefabInstance:
         type: 3}
       propertyPath: nomeDaArmaUI.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1175395472}
+      objectReference: {fileID: 7378937295950209482}
     - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
         type: 3}
       propertyPath: reservaDeBalas
       value: 
       objectReference: {fileID: 350134857}
+    - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: nomeDaArmaUI.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AtualizarTexto
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
 --- !u!4 &1179121621 stripped
@@ -8848,6 +8831,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bc057c9c31344144820fa28af2133b0, type: 3}
+--- !u!1 &1633581300 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1911455793762104969, guid: dae152cc737277587a9993f1a73502a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7378937295950209480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1638094204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9243,8 +9232,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 58.916443, y: 1.7284715, z: 45.2812}
-  m_Center: {x: -29.458221, y: -0.78, z: -22.640265}
+  m_Size: {x: 58.916443, y: 0.34954238, z: 45.2812}
+  m_Center: {x: -29.458221, y: -0.3499291, z: -22.640265}
 --- !u!1001 &1737458314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11334,7 +11323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlePorToque: {fileID: 1257606836}
-  botaoTrocaDeArmaAndroid: {fileID: 788300738}
+  botaoTrocaDeArmaAndroid: {fileID: 1633581300}
   controleTecladoMouse: {fileID: 2044364959}
   direcaoControleAnalogicoToque:
     m_PersistentCalls:
@@ -11904,20 +11893,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1303040285, guid: dae152cc737277587a9993f1a73502a5, type: 3}
+    - target: {fileID: 5222162366318692409, guid: dae152cc737277587a9993f1a73502a5,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1665214592}
-    - target: {fileID: 7378937295532952773, guid: dae152cc737277587a9993f1a73502a5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7378937296397602923, guid: dae152cc737277587a9993f1a73502a5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7378937296622632947, guid: dae152cc737277587a9993f1a73502a5,
         type: 3}
       propertyPath: QuandoMudarOValor.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12045,3 +12025,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dae152cc737277587a9993f1a73502a5, type: 3}
+--- !u!114 &7378937295950209482 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7378937295950209482, guid: dae152cc737277587a9993f1a73502a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7378937295950209480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6379654fe68c799eabbdec3c6839c100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

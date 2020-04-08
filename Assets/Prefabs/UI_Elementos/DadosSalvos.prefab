@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 2560963408192472595}
   - component: {fileID: 2560963408192472597}
   - component: {fileID: 2560963408192472596}
+  - component: {fileID: 4469307379570568633}
   m_Layer: 5
   m_Name: Nome
   m_TagString: Untagged
@@ -156,6 +157,18 @@ MonoBehaviour:
   m_Text: 'teste
 
 '
+--- !u!114 &4469307379570568633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2560963408192472594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6379654fe68c799eabbdec3c6839c100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2560963408276622098
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +340,20 @@ MonoBehaviour:
   textoNome: {fileID: 2560963408192472596}
   textoTempo: {fileID: 2560963409331111254}
   textoPontuacao: {fileID: 2560963407954491807}
+  atualizarNome:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4469307379570568633}
+        m_MethodName: AtualizarTexto
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2560963409331111252
 GameObject:
   m_ObjectHideFlags: 0

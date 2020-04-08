@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class MostrarRegistro : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class MostrarRegistro : MonoBehaviour
     private string iD;
     [SerializeField]
     private int numeroVisivelDeLinhas = 5;
-    private string antigoNome;
+    private string antigoNomeID;
 
     //---------//
     //Unity events//
@@ -50,19 +49,7 @@ public class MostrarRegistro : MonoBehaviour
         AtualizarTempo();
         AtualizarNome();
         iD = listaDeJogadores.AdicionarColocacao(dados.Nome(), dados.Tempo(), dados.Pontos());
-        antigoNome = dados.Nome();
         gerarLista();
-        /*var quantidade = listaDeJogadores.Quantidade();
-        var listaDeColocados = listaDeJogadores.PegarColocados();
-        for (var i = 0; i < listaDeColocados.Count; i++)
-        {
-            if (i >= 5)
-            {
-                break;
-            }
-            preFabLinhas.GetComponent<LinhaDeDados>().Configurar(i + 1, listaDeColocados[i].Nome,listaDeColocados[i].Tempo, listaDeColocados[i].Pontos);
-            Instantiate(preFabLinhas, painelRanking.transform);
-        }*/
     }
 
     private void gerarLista()
@@ -75,27 +62,28 @@ public class MostrarRegistro : MonoBehaviour
             {
                 break;
             }
-            preFabLinhas.GetComponent<LinhaDeDados>().Configurar(i + 1, listaDeColocados[i].Nome, listaDeColocados[i].Tempo, listaDeColocados[i].Pontos);
+            preFabLinhas.GetComponent<LinhaDeDados>().Configurar(i + 1, listaDeColocados[i].Nome, listaDeColocados[i].Tempo, listaDeColocados[i].Pontos, listaDeColocados[i].ID);
             Instantiate(preFabLinhas, painelRanking.transform);
-
-
         }
     }
 
-    private void mudarValorNaLista(string novoNome)
+    private void mudarValorNaLista(string novoNome, string iDAntigo)
     {
         int children = painelRanking.transform.childCount;
-        for (int i = 0; i < children; ++i)
+        LinhaDeDados[] linha;
+        linha = painelRanking.GetComponentsInChildren<LinhaDeDados>();
+        for (int i = 1; i < children; i++)
         {
-            var linha = painelRanking.GetComponentInChildren<LinhaDeDados>();
-            var n = linha.getNome();
-            if(n == antigoNome)
+            var id = linha[i].getIDDessaLinha();           
+            if(id == iDAntigo)
             {
-                linha.AtualizarNome(dados.Nome());
-                antigoNome = dados.Nome();
+                linha[i].AtualizarNome(dados.Nome());
                 break;
             }
         }
+       
+
+
     }
 
     public void AtualizarPontos()
@@ -107,10 +95,15 @@ public class MostrarRegistro : MonoBehaviour
         mostrarTempo.Invoke(dados.Tempo());
     }
     public void AtualizarNome()
-    {
-        atualizaNome.Invoke(dados.Nome());
+    {       
         listaDeJogadores.AlterarNome(dados.Nome(),iD);
-        mudarValorNaLista(dados.Nome());
+        //mudarValorNaLista(dados.Nome(), iD);
+        atualizaNome.Invoke(dados.Nome());
+    }
+
+    public void MudardadoNaTela()
+    {
+        mudarValorNaLista(dados.Nome(), iD);
     }
 
 }

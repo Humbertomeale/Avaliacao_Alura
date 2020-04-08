@@ -13,23 +13,33 @@ public class LinhaDeDados : MonoBehaviour
     private Text textoTempo;
     [SerializeField]
     private Text textoPontuacao;
+    [SerializeField]
+    private ObterStringEvent atualizarNome;
+    [SerializeField]
+    private string IDatual;
 
-    public void Configurar(int posicao, string nome, string tempo, int pontuacao)
+    public void Configurar(int posicao, string nome, string tempo, int pontuacao, string Id)
     {
         textoPosicao.text = posicao.ToString();
         textoNome.text = nome;
         textoTempo.text = tempo;
         textoPontuacao.text = pontuacao.ToString();
-
-
+        IDatual = Id;
     }
 
     public void AtualizarNome(string novoNome)
     {
         textoNome.text = novoNome;
+        atualizarNome.Invoke(novoNome);
     }
+
     public string getNome()
     {
         return textoNome.text;
+    }
+
+    public string getIDDessaLinha()
+    {
+        return IDatual;
     }
 }

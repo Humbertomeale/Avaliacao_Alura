@@ -4741,12 +4741,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 421413484}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &422536325 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1303040283, guid: dae152cc737277587a9993f1a73502a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1693464244}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &430537339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15732,7 +15726,7 @@ PrefabInstance:
         type: 3}
       propertyPath: nomeDaArmaUI.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1654881059}
+      objectReference: {fileID: 1693464245}
     - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
         type: 3}
       propertyPath: nomeDaArmaUI.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -20014,18 +20008,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1653633383}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1654881059 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1175395472, guid: dae152cc737277587a9993f1a73502a5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1693464244}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6379654fe68c799eabbdec3c6839c100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1656221632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20406,6 +20388,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: AlternarSlots
       objectReference: {fileID: 0}
+    - target: {fileID: 5222162366318692409, guid: dae152cc737277587a9993f1a73502a5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1665214593}
+    - target: {fileID: 5222162366318692409, guid: dae152cc737277587a9993f1a73502a5,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AlternarSlots
+      objectReference: {fileID: 0}
     - target: {fileID: 7378937296622632947, guid: dae152cc737277587a9993f1a73502a5,
         type: 3}
       propertyPath: QuandoMudarOValor.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -20538,6 +20530,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dae152cc737277587a9993f1a73502a5, type: 3}
+--- !u!114 &1693464245 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7378937295950209482, guid: dae152cc737277587a9993f1a73502a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693464244}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6379654fe68c799eabbdec3c6839c100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1693464246 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7378937296978944017, guid: dae152cc737277587a9993f1a73502a5,
@@ -20550,6 +20554,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3204a26ec09df4ba98b5620e33791f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1693464247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1911455793762104969, guid: dae152cc737277587a9993f1a73502a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1693464244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1698198134
 GameObject:
   m_ObjectHideFlags: 0
@@ -24431,7 +24441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlePorToque: {fileID: 1298096174}
-  botaoTrocaDeArmaAndroid: {fileID: 422536325}
+  botaoTrocaDeArmaAndroid: {fileID: 1693464247}
   controleTecladoMouse: {fileID: 2007709275}
   direcaoControleAnalogicoToque:
     m_PersistentCalls:
