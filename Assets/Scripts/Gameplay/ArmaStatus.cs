@@ -19,6 +19,8 @@ public class ArmaStatus : MonoBehaviour, IArmavel
     private float precisaoDetiro = 1f;
     [SerializeField]
     private bool disparoAutomatico = false;
+    [SerializeField]
+    private AudioClip somDoTiro;
     //-------//
     public string PegarNome()
     {
@@ -45,8 +47,22 @@ public class ArmaStatus : MonoBehaviour, IArmavel
         return precisaoDetiro;
     }
 
-    public bool temDisparoautomatico()
+    public bool PegarTipoDeDisparo()
     {
         return disparoAutomatico;
+    }
+
+    public void AtivarModelo3D()
+    {
+        modelo3D.SetActive(true);
+    }
+
+    public void DesativarModelo3D()
+    {
+        modelo3D.SetActive(false);
+    }
+    public AudioClip PegarSomDoTiro()
+    {
+        return somDoTiro;
     }
 }

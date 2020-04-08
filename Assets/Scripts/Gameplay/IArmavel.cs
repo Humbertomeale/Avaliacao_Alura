@@ -9,5 +9,5 @@ public interface IArmavel
     float PegarCadencia();
     float PegarVelocidadeDaBala();
     float PegarPrecisao();
-    bool temDisparoautomatico();
+    bool PegarTipoDeDisparo();
 }

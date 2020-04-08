@@ -13,6 +13,8 @@ public class ComandosParaOJogador : MonoBehaviour
     [SerializeField]
     private GameObject controlePorToque;
     [SerializeField]
+    private GameObject botaoTrocaDeArmaAndroid;
+    [SerializeField]
     private InputTecladoMouse controleTecladoMouse;
     [SerializeField]
     private MeuEventoDinamicoVector3 direcaoControleAnalogicoToque;
@@ -26,14 +28,16 @@ public class ComandosParaOJogador : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-#if UNITY_STANDALONE || UNITY_EDITOR
+#if UNITY_STANDALONE //|| UNITY_EDITOR
         sistemaAndroid = false;
         controlePorToque.SetActive(false);
+        botaoTrocaDeArmaAndroid.SetActive(false);
         Debug.Log("PC");
 #endif
 #if UNITY_ANDROID
         sistemaAndroid = true;
         controlePorToque.SetActive(true);
+        botaoTrocaDeArmaAndroid.SetActive(true);
         Debug.Log("Android");
 #endif
     }
