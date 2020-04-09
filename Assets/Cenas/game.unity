@@ -6513,11 +6513,6 @@ PrefabInstance:
       propertyPath: reservaDeBalas
       value: 
       objectReference: {fileID: 350134857}
-    - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: nomeDaArmaUI.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AtualizarTexto
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
 --- !u!4 &1179121621 stripped

@@ -15707,31 +15707,6 @@ PrefabInstance:
       propertyPath: atualizandoBarraDeVida.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1693464246}
-    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: aoMorrer.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GameOver
-      objectReference: {fileID: 0}
-    - target: {fileID: 114135333458066176, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: atualizandoBarraDeVida.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AtualizarSliderVidaJogador
-      objectReference: {fileID: 0}
-    - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: reservaDeBalas
-      value: 
-      objectReference: {fileID: 350134857}
-    - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: nomeDaArmaUI.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1693464245}
-    - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
-        type: 3}
-      propertyPath: nomeDaArmaUI.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AtualizarTexto
-      objectReference: {fileID: 0}
     - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
         type: 3}
       propertyPath: armaSlot_01
@@ -15742,6 +15717,16 @@ PrefabInstance:
       propertyPath: armaSlot_02
       value: 
       objectReference: {fileID: 145846023}
+    - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: nomeDaArmaUI.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1693464245}
+    - target: {fileID: 114240463659201816, guid: 4b3bb44effa49480d8d18049684cc33a,
+        type: 3}
+      propertyPath: reservaDeBalas
+      value: 
+      objectReference: {fileID: 350134857}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b3bb44effa49480d8d18049684cc33a, type: 3}
 --- !u!1001 &1181708454
@@ -20380,34 +20365,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1303040285, guid: dae152cc737277587a9993f1a73502a5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1665214593}
-    - target: {fileID: 1303040285, guid: dae152cc737277587a9993f1a73502a5, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AlternarSlots
-      objectReference: {fileID: 0}
     - target: {fileID: 5222162366318692409, guid: dae152cc737277587a9993f1a73502a5,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1665214593}
-    - target: {fileID: 5222162366318692409, guid: dae152cc737277587a9993f1a73502a5,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AlternarSlots
-      objectReference: {fileID: 0}
     - target: {fileID: 7378937296622632947, guid: dae152cc737277587a9993f1a73502a5,
         type: 3}
       propertyPath: QuandoMudarOValor.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2007709274}
-    - target: {fileID: 7378937296622632947, guid: dae152cc737277587a9993f1a73502a5,
-        type: 3}
-      propertyPath: QuandoMudarOValor.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ObterDirecaoControleToque
-      objectReference: {fileID: 0}
     - target: {fileID: 7378937296978944016, guid: dae152cc737277587a9993f1a73502a5,
         type: 3}
       propertyPath: m_LocalPosition.x

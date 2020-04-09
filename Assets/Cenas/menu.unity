@@ -607,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 648dddc799b45a4488d7af83e1296c11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -1335,7 +1335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 648dddc799b45a4488d7af83e1296c11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -3351,7 +3351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 648dddc799b45a4488d7af83e1296c11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
@@ -4971,6 +4971,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7136588379187778891, guid: 4a99fd6ee0153aba6b891b3dc91b24dd,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 648dddc799b45a4488d7af83e1296c11, type: 3}
     - target: {fileID: 7136588379617589444, guid: 4a99fd6ee0153aba6b891b3dc91b24dd,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -5005,6 +5010,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1320272344}
     m_Modifications:
+    - target: {fileID: 8581912162280359030, guid: 0fd7a5f55af1cbe57a01f63dc9c876b3,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 648dddc799b45a4488d7af83e1296c11, type: 3}
     - target: {fileID: 8581912163622102481, guid: 0fd7a5f55af1cbe57a01f63dc9c876b3,
         type: 3}
       propertyPath: m_AnchorMin.x
